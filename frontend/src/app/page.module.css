@@ -1,0 +1,118 @@
+.page {
+  --i4m-bleu: #11a2dd;
+  --i4m-bleu-tres-clair: #e0ecfa;
+  --i4m-rose-fonce: #e64587;
+  --i4m-rose-clair: #f29ec1;
+  --i4m-texte: #575756;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  background: #f4f4f4;
+  min-height: 100vh;
+  font-family: var(--font-geist-sans), sans-serif;
+  color: var(--i4m-texte);
+}
+
+.shell {
+  width: 100%;
+  max-width: 390px;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.selecteurTitre {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--i4m-bleu);
+  padding: 24px 16px 4px;
+}
+
+.selecteurIntro {
+  font-size: 13px;
+  padding: 0 16px 16px;
+}
+
+.listeDonateurs {
+  list-style: none;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.boutonDonateur {
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: var(--i4m-bleu-tres-clair);
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.heroBanner {
+  background: linear-gradient(135deg, var(--i4m-rose-clair) 0%, var(--i4m-bleu-tres-clair) 100%);
+  padding: 24px 16px 20px;
+  text-align: center;
+}
+
+.passportTitre {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--i4m-rose-fonce);
+  line-height: 1.1;
+}
+
+.bienvenue {
+  padding: 20px 16px 0;
+}
+
+.bienvenue h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.donCarte {
+  margin: 16px;
+  background: var(--i4m-bleu-tres-clair);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.donLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--i4m-bleu);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.donMontant {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--i4m-rose-fonce);
+}
+
+.donDate {
+  font-size: 12px;
+}
+
+.boutonPrimaire {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 8px 16px 16px;
+  background: var(--i4m-rose-fonce);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
