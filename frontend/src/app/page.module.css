@@ -150,3 +150,42 @@
   border: none;
   cursor: pointer;
 }
+
+.boutonSecondaire {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 0 16px 16px;
+  background: transparent;
+  color: var(--i4m-bleu);
+  font: inherit;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: 1px solid var(--i4m-bleu);
+  cursor: pointer;
+}
+
+.listeProjets {
+  list-style: none;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.carteProjet {
+  background: var(--i4m-bleu-tres-clair);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.projetNom {
+  font-weight: 700;
+  color: var(--i4m-rose-fonce);
+  margin-bottom: 4px;
+}
+
+.projetDescription {
+  font-size: 13px;
+  margin: 0;
+}

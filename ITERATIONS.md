@@ -142,9 +142,73 @@ si le temps restant est revu à la hausse en cours de route.
 
 ---
 
+---
+
+## Itération 3 : Les projets financés (J+30)
+
+- **Temps restant annoncé** : 10 à 20 minutes, demandé à 17:16. ✂️ Je réduis à
+  une liste de 3 cartes statiques (nom du projet + une phrase), sans image,
+  sans détail de projet (hors périmètre explicite de la passation).
+- **Dans le périmètre** :
+  - L'écran de répartition (J+7) gagne un bouton vers l'écran « Les projets
+    que vous financez » (J+30).
+  - Cet écran liste 3 projets en dur (Cancer du cerveau, Leucémie
+    pédiatrique, Immunothérapie pédiatrique), chacun avec son intitulé et une
+    phrase d'exemple fictive (❓ la passation ne donne que les noms, pas de
+    description ; phrases inventées dans le même esprit que les autres
+    données d'exemple déjà fictives du prototype).
+  - Un bouton retour vers l'écran de répartition.
+- **Hors périmètre** : écran de détail dédié par projet (carte cliquable vers
+  une fiche séparée) — exclu explicitement par les cadreurs
+  (`passation/PASSATION.md:243`) ; J+60, J+90 ; images/photos.
+- **Critères d'acceptation** :
+  - Étant donné l'écran de répartition affiché, quand on clique sur le
+    bouton des projets, alors les 3 projets s'affichent.
+  - Étant donné l'écran des projets affiché, quand on revient en arrière,
+    alors l'écran de répartition réapparaît.
+  - Les 3 projets du plan de livraison sont bien ceux qui s'affichent (pas
+    de nom inventé).
+- **Hypothèse de l'équipe couverte** : étape 3 du plan de livraison
+  (« les projets que mon don finance »).
+- **Codage estimé** : 8 minutes.
+- **Fichiers prévus** : `frontend/src/data/projets.ts` (+ test : 3 projets,
+  aucun intitulé vide), `frontend/src/app/page.tsx`,
+  `frontend/src/app/page.module.css`.
+- **Plan validé** à 17:16 (ajusté à 17:17 : description en une phrase par
+  carte ajoutée au périmètre, à la demande du développeur).
+- **Bilan** :
+  - Durée de codage réelle : moins d'1 minute, pas de dépassement.
+  - Critères d'acceptation : les 3 sont satisfaits (bouton vers les projets
+    depuis la répartition, retour vers la répartition, les 3 noms exacts de
+    la passation affichés — vérifié par test unitaire).
+  - ⚠️ Changement de périmètre signalé en cours d'itération : le développeur a
+    demandé le détail des projets, alors que la passation exclut
+    explicitement une fiche dédiée par projet
+    (`passation/PASSATION.md:243`). Clarifié avec lui : la demande portait sur
+    une phrase descriptive par carte (pas un écran dédié), ce qui reste
+    compatible avec l'arbitrage des cadreurs — pas de fiche de détail créée.
+    ❓ Les 3 phrases descriptives sont inventées (la passation ne fournit que
+    les noms des projets) ; à faire valider par les cadreurs au prochain tour
+    de test.
+  - Reporté : rien à cette itération.
+  - Ce que le harnais a bloqué/refusé : rien.
+  - **Modifications** :
+    - `frontend/src/data/projets.ts` (+ `projets.test.ts`) — 3 projets de la
+      passation (noms exacts) avec une phrase d'exemple fictive chacun,
+      testés (critères 1, 3).
+    - `frontend/src/app/page.tsx` — écran « Les projets que vous financez »,
+      navigation depuis/vers l'écran de répartition (critères 1, 2).
+    - `frontend/src/app/page.module.css` — cartes de projets, bouton
+      secondaire.
+    - Rebuild/redéploiement du seul service `frontend`.
+
+---
+
 ## À venir (hors budget actuel, à retailler si le temps change)
 
-1. ~~La répartition des fonds (J+7)~~ → traitée en itération 2 ci-dessus.
+1. ~~La répartition des fonds (J+7)~~ → traitée en itération 2.
+2. ~~Les projets de recherche financés (J+30)~~ → traitée en itération 3
+   ci-dessus.
 2. Les projets de recherche financés (J+30) : cartes de projets (Cancer du
    cerveau, Leucémie pédiatrique, Immunothérapie pédiatrique).
 3. Les avancées scientifiques (J+60) : vidéo placeholder d'une chercheuse,

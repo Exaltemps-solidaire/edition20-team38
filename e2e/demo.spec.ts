@@ -20,4 +20,9 @@ test("Démo : le cas passant", async ({ page }) => {
     await page.getByRole("button", { name: /Découvrir l'impact/ }).click();
     await expect(page.getByText("Recherche médicale")).toBeVisible();
   });
+
+  await test.step("Je vois les projets que je finance", async () => {
+    await page.getByRole("button", { name: /projets que je finance/ }).click();
+    await expect(page.getByText("Cancer du cerveau")).toBeVisible();
+  });
 });
