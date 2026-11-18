@@ -321,5 +321,11 @@ si le temps restant est revu à la hausse en cours de route.
 2. ~~Les projets de recherche financés (J+30)~~ → traitée en itération 3.
 3. ~~Les avancées scientifiques (J+60)~~ → traitée en itération 4 ci-dessus.
 4. ~~Le bilan et l'engagement (J+90)~~ → traitée en itération 5 ci-dessus.
-5. Stabilisation finale pour le pitch, si le temps restant ne permet plus
-   qu'une dernière itération.
+5. ~~Stabilisation finale pour le pitch~~ → le développeur arrête les
+   itérations après la 5 (parcours J0 à J+90 complet) ; pas de stabilisation
+   supplémentaire demandée.
+
+**Fin des itérations**, décidée par le développeur après l'itération 5. Les 5
+étapes du plan de livraison de la passation (J0, J+7, J+30, J+60, J+90) sont
+livrées et signalées à PM Lab. Pour le bilan du harnais en fin de hackathon,
+voir `/retro-harnais`.
