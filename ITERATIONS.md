@@ -50,7 +50,46 @@ si le temps restant est revu à la hausse en cours de route.
   (pas sur le balisage).
 - **Étapes ajoutées à la démo** (`e2e/demo.spec.ts`) : ouvrir l'app, choisir le
   donateur fictif, vérifier l'affichage du montant et de la date du don.
-- **Bilan** : _à remplir en fin d'itération._
+- **Bilan** :
+  - Durée de codage réelle : ~1 minute (chrono 16:41:56 → 16:43:01). Le dépôt
+    de travail initial, `/srv/team38/exaltemps-solidaire`, n'était pas le bon
+    (ce n'est pas celui versé par l'infra pour l'équipe, il ne pousse nulle
+    part) : ~17 min ont été perdues à migrer le travail vers `/srv/team38/app`
+    avant de relancer le chrono. Pas de dépassement des 10 minutes de codage
+    une fois au bon endroit.
+  - Critères d'acceptation : les 3 sont satisfaits (sélecteur affichant
+    Claire, Passeport J0 avec montant/date sans appel à don visible,
+    `/health`/`/sante` répondent 200 sur les deux services).
+  - Reporté : rien à cette itération — le périmètre tenait dans le temps.
+  - Ce que le harnais a bloqué/refusé : rien côté `verifier-avant-signal.sh`
+    (contrat de déployabilité et tests déjà verts avant le signal). Une
+    alarme budget parasite a sonné une fois, attribuée à un chrono resté
+    ouvert dans le mauvais dépôt (`exaltemps-solidaire/.iterations/1.debut`,
+    jamais clos) — sans rapport avec le temps de codage réel dans `app/`.
+  - Blocage externe (hors harnais) : la limite de pull anonyme Docker Hub a
+    empêché un premier `podman build` (images `node:24-alpine` et
+    `nginx:1.27-alpine`) ; résolu après nouvelle tentative, puis un second
+    blocage (port 8080 squatté par un `next-server` de développement resté
+    actif) a été levé en tuant le processus.
+  - **Modifications** :
+    - `frontend/src/data/donateurs.ts` — données d'exemple du donateur Claire
+      (critère 1).
+    - `frontend/src/lib/formatage.ts` (+ `formatage.test.ts`) — formatage
+      montant/date du don, testé (critère 2, DoD point 2).
+    - `frontend/src/app/page.tsx`, `page.module.css`, `layout.tsx` — écrans
+      « Qui êtes-vous ? » et « Passeport J0 » (critères 1 et 2).
+    - `api/Dockerfile`, `frontend/Dockerfile` — images de base qualifiées
+      `docker.io/library/…` (DoD point 4, requis par le `/CLAUDE.md` racine).
+    - `podman-compose.yml` — déploiement sur `core-network`, ports 8080/8081
+      (DoD point 4).
+    - `.env.example`, `DEPLOIEMENT.md` — squelette de déployabilité (DoD
+      point 3).
+    - Commit initial du gabarit de départ (`api/`, `scripts/`, `docs/`,
+      `.claude/`...), jamais versé jusqu'ici.
+    - `e2e/demo.spec.ts` — étapes « choisir Claire » et « voir le Passeport
+      J0 » ajoutées ; non exécutées ici (binaire Chromium de Playwright
+      absent de la machine, `npx playwright install` non lancé faute de
+      temps) — hors DoD, signalé sans bloquer la publication.
 
 ---
 
