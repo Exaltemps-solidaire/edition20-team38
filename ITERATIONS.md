@@ -255,22 +255,71 @@ si le temps restant est revu à la hausse en cours de route.
 
 ---
 
+## Itération 5 : Le bilan et l'engagement (J+90)
+
+- **Temps restant annoncé** : 10 à 20 minutes, demandé à 17:31. ✂️ Je réduis
+  aux chiffres exacts de la passation (pas de graphique), et aux deux boutons
+  sans action réelle (pas d'appel à don, pas de partage fonctionnel — hors
+  périmètre de cette planification).
+- **Dans le périmètre** :
+  - L'écran des avancées (J+60) gagne un bouton vers l'écran « Mon impact
+    solidaire » (J+90).
+  - Cet écran affiche le bilan chiffré collectif donné par la passation
+    (maquette 5) : 5 projets, 120 enfants, 2 pistes de recherche.
+  - Deux boutons présents, sans action fonctionnelle : « Poursuivre mon
+    engagement » et « Partager la cause » (seul écran du parcours où un appel
+    à renouveler l'engagement est visible, conformément à la passation ; aucun
+    flux de don/partage réel n'est dans le périmètre de cette session).
+  - Un bouton retour vers l'écran des avancées.
+- **Hors périmètre** : tout appel à don fonctionnel, tout partage réel
+  (réseaux sociaux, lien), emails automatiques, mesure du compteur
+  d'appels à don.
+- **Critères d'acceptation** :
+  - Étant donné l'écran des avancées affiché, quand on clique sur le bouton
+    du bilan, alors les 3 chiffres (5 projets, 120 enfants, 2 pistes) et les
+    2 boutons d'action s'affichent.
+  - Étant donné l'écran du bilan affiché, quand on revient en arrière, alors
+    l'écran des avancées réapparaît.
+  - Les 3 chiffres affichés sont exactement ceux de la passation (maquette 5).
+- **Hypothèse de l'équipe couverte** : étape 5 du plan de livraison
+  (« bilan et engagement »).
+- **Codage estimé** : 7 minutes.
+- **Fichiers prévus** : `frontend/src/data/bilan.ts` (+ test : 3 chiffres),
+  `frontend/src/app/page.tsx`, `frontend/src/app/page.module.css`.
+- **Plan validé** à 17:31.
+- **Bilan** :
+  - Durée de codage réelle : moins d'1 minute, pas de dépassement.
+  - Critères d'acceptation : les 3 sont satisfaits (bouton depuis les
+    avancées, les 3 chiffres exacts de la passation (5, 120, 2) et les 2
+    boutons d'action affichés, retour vers les avancées — vérifié par test
+    unitaire pour les chiffres).
+  - Les boutons « Poursuivre mon engagement » et « Partager la cause » sont
+    affichés sans action (pas de `onClick`) : conforme au plan, aucun appel à
+    don ni partage réel n'était dans le périmètre.
+  - Reporté : rien. C'était la dernière étape du plan de livraison de la
+    passation (J0 à J+90) ; il ne reste que la stabilisation finale (item 5 de
+    « À venir »).
+  - Ce que le harnais a bloqué/refusé : rien (contrat de déployabilité et
+    tests verts avant rebuild/déploiement).
+  - **Modifications** :
+    - `frontend/src/data/bilan.ts` (+ `bilan.test.ts`) — chiffres exacts de la
+      maquette 5 de la passation (5 projets, 120 enfants, 2 pistes), testés
+      (critère 3).
+    - `frontend/src/app/page.tsx` — écran « Mon impact solidaire », navigation
+      depuis/vers l'écran des avancées, boutons d'action inertes (critères 1,
+      2).
+    - `frontend/src/app/page.module.css` — cartes de chiffres du bilan.
+    - `e2e/demo.spec.ts` — étape « Je vois mon impact solidaire » ajoutée
+      (non exécutée, Chromium absent — hors DoD, signalé).
+    - Rebuild/redéploiement du seul service `frontend`.
+
+---
+
 ## À venir (hors budget actuel, à retailler si le temps change)
 
 1. ~~La répartition des fonds (J+7)~~ → traitée en itération 2.
 2. ~~Les projets de recherche financés (J+30)~~ → traitée en itération 3.
 3. ~~Les avancées scientifiques (J+60)~~ → traitée en itération 4 ci-dessus.
-4. Le bilan et l'engagement (J+90) : bilan chiffré collectif, boutons
-   « Poursuivre mon engagement » et « Partager la cause » — seul écran avec
-   un appel à renouveler l'engagement.
-5. Stabilisation finale pour le pitch, si le temps restant ne permet plus
-   qu'une dernière itération.
-2. Les projets de recherche financés (J+30) : cartes de projets (Cancer du
-   cerveau, Leucémie pédiatrique, Immunothérapie pédiatrique).
-3. Les avancées scientifiques (J+60) : vidéo placeholder d'une chercheuse,
-   témoignage/citation.
-4. Le bilan et l'engagement (J+90) : bilan chiffré collectif, boutons
-   « Poursuivre mon engagement » et « Partager la cause » — seul écran avec
-   un appel à renouveler l'engagement.
+4. ~~Le bilan et l'engagement (J+90)~~ → traitée en itération 5 ci-dessus.
 5. Stabilisation finale pour le pitch, si le temps restant ne permet plus
    qu'une dernière itération.

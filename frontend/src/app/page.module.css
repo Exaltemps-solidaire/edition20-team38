@@ -211,3 +211,30 @@
   color: var(--i4m-rose-fonce);
   text-align: right;
 }
+
+.listeBilan {
+  list-style: none;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.carteBilan {
+  background: var(--i4m-bleu-tres-clair);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.bilanChiffre {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--i4m-rose-fonce);
+}
+
+.bilanLabel {
+  font-size: 13px;
+}

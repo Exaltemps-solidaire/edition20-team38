@@ -30,4 +30,9 @@ test("Démo : le cas passant", async ({ page }) => {
     await page.getByRole("button", { name: /avancées scientifiques/ }).click();
     await expect(page.getByText("Dr. Léa Martin")).toBeVisible();
   });
+
+  await test.step("Je vois mon impact solidaire", async () => {
+    await page.getByRole("button", { name: /mon impact solidaire/ }).click();
+    await expect(page.getByText("Poursuivre mon engagement")).toBeVisible();
+  });
 });

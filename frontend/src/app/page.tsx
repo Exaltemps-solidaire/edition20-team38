@@ -1,13 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import { BILAN } from "@/data/bilan";
 import { DONATEURS, type Donateur } from "@/data/donateurs";
 import { PROJETS } from "@/data/projets";
 import { REPARTITION } from "@/data/repartition";
 import { formatDateDon, formatMontant } from "@/lib/formatage";
 import styles from "./page.module.css";
 
-type Ecran = "selecteur" | "passeport" | "repartition" | "projets" | "avancees";
+type Ecran =
+  | "selecteur"
+  | "passeport"
+  | "repartition"
+  | "projets"
+  | "avancees"
+  | "bilan";
 
 export default function Home() {
   const [donateur, setDonateur] = useState<Donateur | null>(null);
@@ -50,7 +57,13 @@ export default function Home() {
           />
         )}
         {ecran === "avancees" && (
-          <Avancees onRetour={() => setEcran("projets")} />
+          <Avancees
+            onRetour={() => setEcran("projets")}
+            onBilan={() => setEcran("bilan")}
+          />
+        )}
+        {ecran === "bilan" && (
+          <Bilan onRetour={() => setEcran("avancees")} />
         )}
       </div>
     </div>
@@ -218,7 +231,13 @@ function Projets({
   );
 }
 
-function Avancees({ onRetour }: { onRetour: () => void }) {
+function Avancees({
+  onRetour,
+  onBilan,
+}: {
+  onRetour: () => void;
+  onBilan: () => void;
+}) {
   return (
     <section>
       <div className={styles.heroBanner}>
@@ -237,8 +256,49 @@ function Avancees({ onRetour }: { onRetour: () => void }) {
         <div className={styles.chercheuseNom}>Dr. Léa Martin</div>
       </div>
 
-      <button type="button" className={styles.boutonPrimaire} onClick={onRetour}>
+      <button type="button" className={styles.boutonPrimaire} onClick={onBilan}>
+        Voir mon impact solidaire →
+      </button>
+
+      <button type="button" className={styles.boutonSecondaire} onClick={onRetour}>
         ← Retour aux projets
+      </button>
+    </section>
+  );
+}
+
+function Bilan({ onRetour }: { onRetour: () => void }) {
+  return (
+    <section>
+      <div className={styles.heroBanner}>
+        <div className={styles.passportTitre}>Mon impact solidaire</div>
+      </div>
+
+      <ul className={styles.listeBilan}>
+        <li className={styles.carteBilan}>
+          <div className={styles.bilanChiffre}>{BILAN.projets}</div>
+          <div className={styles.bilanLabel}>projets soutenus</div>
+        </li>
+        <li className={styles.carteBilan}>
+          <div className={styles.bilanChiffre}>{BILAN.enfants}</div>
+          <div className={styles.bilanLabel}>enfants accompagnés</div>
+        </li>
+        <li className={styles.carteBilan}>
+          <div className={styles.bilanChiffre}>{BILAN.pistes}</div>
+          <div className={styles.bilanLabel}>pistes de recherche</div>
+        </li>
+      </ul>
+
+      <button type="button" className={styles.boutonPrimaire}>
+        Poursuivre mon engagement
+      </button>
+
+      <button type="button" className={styles.boutonSecondaire}>
+        Partager la cause
+      </button>
+
+      <button type="button" className={styles.boutonSecondaire} onClick={onRetour}>
+        ← Retour aux avancées
       </button>
     </section>
   );
