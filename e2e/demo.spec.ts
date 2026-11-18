@@ -15,4 +15,9 @@ test("Démo : le cas passant", async ({ page }) => {
     await expect(page.getByText("50 €")).toBeVisible();
     await expect(page.getByText("le 18 novembre 2024")).toBeVisible();
   });
+
+  await test.step("Je découvre où va mon argent", async () => {
+    await page.getByRole("button", { name: /Découvrir l'impact/ }).click();
+    await expect(page.getByText("Recherche médicale")).toBeVisible();
+  });
 });
