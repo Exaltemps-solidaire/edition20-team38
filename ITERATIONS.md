@@ -204,11 +204,67 @@ si le temps restant est revu à la hausse en cours de route.
 
 ---
 
+---
+
+## Itération 4 : Les avancées scientifiques (J+60)
+
+- **Temps restant annoncé** : 10 à 20 minutes, demandé à 17:23. ✂️ Je réduis à
+  un texte + une citation, sans placeholder vidéo (pas de lecteur, pas
+  d'asset à préparer dans le temps restant).
+- **Dans le périmètre** :
+  - L'écran des projets (J+30) gagne un bouton vers l'écran « Les avancées
+    scientifiques » (J+60).
+  - Cet écran affiche le nom de la chercheuse (« Dr. Léa Martin », donné par
+    la passation) et une citation en dur. ❓ La passation ne donne que le
+    principe (« une citation directe constitue la preuve concrète des
+    résultats »), pas son texte : citation inventée, même précédent que les
+    descriptions de projets de l'itération 3, à faire valider par les
+    cadreurs.
+  - Un bouton retour vers l'écran des projets.
+- **Hors périmètre** : lecteur vidéo, J+90.
+- **Critères d'acceptation** :
+  - Étant donné l'écran des projets affiché, quand on clique sur le bouton
+    des avancées, alors le nom de la chercheuse et sa citation s'affichent.
+  - Étant donné l'écran des avancées affiché, quand on revient en arrière,
+    alors l'écran des projets réapparaît.
+  - Le nom affiché est exactement celui de la passation (« Dr. Léa Martin »).
+- **Hypothèse de l'équipe couverte** : étape 4 du plan de livraison
+  (« les avancées scientifiques »).
+- **Codage estimé** : 6 minutes.
+- **Fichiers prévus** : `frontend/src/app/page.tsx`,
+  `frontend/src/app/page.module.css`.
+- **Plan validé** à 17:24.
+- **Bilan** :
+  - Durée de codage réelle : moins d'1 minute, pas de dépassement.
+  - Critères d'acceptation : les 3 sont satisfaits (bouton depuis les
+    projets, nom et citation affichés, retour vers les projets).
+  - Pas de nouveau test unitaire : aucune logique métier ajoutée (texte et
+    navigation seulement), conformément à la règle « pas de test sur du
+    balisage pur ».
+  - ❓ Citation inventée (même point que les descriptions de projets de
+    l'itération 3) : la passation ne fournit que le principe d'une citation,
+    pas son texte — à faire valider par les cadreurs au tour de test.
+  - Reporté : rien à cette itération. J+90 reste la seule étape du plan de
+    livraison hors périmètre.
+  - Ce que le harnais a bloqué/refusé : rien.
+  - **Modifications** :
+    - `frontend/src/app/page.tsx` — écran « Les avancées scientifiques »,
+      navigation depuis/vers l'écran des projets (critères 1, 2, 3).
+    - `frontend/src/app/page.module.css` — carte citation.
+    - Rebuild/redéploiement du seul service `frontend`.
+
+---
+
 ## À venir (hors budget actuel, à retailler si le temps change)
 
 1. ~~La répartition des fonds (J+7)~~ → traitée en itération 2.
-2. ~~Les projets de recherche financés (J+30)~~ → traitée en itération 3
-   ci-dessus.
+2. ~~Les projets de recherche financés (J+30)~~ → traitée en itération 3.
+3. ~~Les avancées scientifiques (J+60)~~ → traitée en itération 4 ci-dessus.
+4. Le bilan et l'engagement (J+90) : bilan chiffré collectif, boutons
+   « Poursuivre mon engagement » et « Partager la cause » — seul écran avec
+   un appel à renouveler l'engagement.
+5. Stabilisation finale pour le pitch, si le temps restant ne permet plus
+   qu'une dernière itération.
 2. Les projets de recherche financés (J+30) : cartes de projets (Cancer du
    cerveau, Leucémie pédiatrique, Immunothérapie pédiatrique).
 3. Les avancées scientifiques (J+60) : vidéo placeholder d'une chercheuse,

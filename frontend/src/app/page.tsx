@@ -7,7 +7,7 @@ import { REPARTITION } from "@/data/repartition";
 import { formatDateDon, formatMontant } from "@/lib/formatage";
 import styles from "./page.module.css";
 
-type Ecran = "selecteur" | "passeport" | "repartition" | "projets";
+type Ecran = "selecteur" | "passeport" | "repartition" | "projets" | "avancees";
 
 export default function Home() {
   const [donateur, setDonateur] = useState<Donateur | null>(null);
@@ -44,7 +44,13 @@ export default function Home() {
           />
         )}
         {ecran === "projets" && (
-          <Projets onRetour={() => setEcran("repartition")} />
+          <Projets
+            onRetour={() => setEcran("repartition")}
+            onAvancees={() => setEcran("avancees")}
+          />
+        )}
+        {ecran === "avancees" && (
+          <Avancees onRetour={() => setEcran("projets")} />
         )}
       </div>
     </div>
@@ -171,7 +177,13 @@ function Repartition({
   );
 }
 
-function Projets({ onRetour }: { onRetour: () => void }) {
+function Projets({
+  onRetour,
+  onAvancees,
+}: {
+  onRetour: () => void;
+  onAvancees: () => void;
+}) {
   return (
     <section>
       <div className={styles.heroBanner}>
@@ -191,8 +203,42 @@ function Projets({ onRetour }: { onRetour: () => void }) {
         ))}
       </ul>
 
-      <button type="button" className={styles.boutonPrimaire} onClick={onRetour}>
+      <button
+        type="button"
+        className={styles.boutonPrimaire}
+        onClick={onAvancees}
+      >
+        Voir les avancées scientifiques →
+      </button>
+
+      <button type="button" className={styles.boutonSecondaire} onClick={onRetour}>
         ← Retour à la répartition
+      </button>
+    </section>
+  );
+}
+
+function Avancees({ onRetour }: { onRetour: () => void }) {
+  return (
+    <section>
+      <div className={styles.heroBanner}>
+        <div className={styles.passportTitre}>
+          Les avancées
+          <br />
+          scientifiques
+        </div>
+      </div>
+
+      <div className={styles.carteChercheuse}>
+        <blockquote className={styles.citation}>
+          « Chaque don nous rapproche d&apos;un traitement qui n&apos;existait
+          pas il y a cinq ans. »
+        </blockquote>
+        <div className={styles.chercheuseNom}>Dr. Léa Martin</div>
+      </div>
+
+      <button type="button" className={styles.boutonPrimaire} onClick={onRetour}>
+        ← Retour aux projets
       </button>
     </section>
   );
