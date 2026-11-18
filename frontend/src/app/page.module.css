@@ -103,6 +103,40 @@
   font-size: 12px;
 }
 
+.listeRepartition {
+  list-style: none;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.posteRepartition {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.posteEnTete {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.barreFond {
+  background: var(--i4m-bleu-tres-clair);
+  border-radius: 8px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.barreRemplissage {
+  background: var(--i4m-rose-fonce);
+  height: 100%;
+  border-radius: 8px;
+}
+
 .boutonPrimaire {
   display: block;
   width: calc(100% - 32px);

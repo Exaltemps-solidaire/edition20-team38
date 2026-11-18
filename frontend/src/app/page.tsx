@@ -2,19 +2,41 @@
 
 import { useState } from "react";
 import { DONATEURS, type Donateur } from "@/data/donateurs";
+import { REPARTITION } from "@/data/repartition";
 import { formatDateDon, formatMontant } from "@/lib/formatage";
 import styles from "./page.module.css";
 
+type Ecran = "selecteur" | "passeport" | "repartition";
+
 export default function Home() {
   const [donateur, setDonateur] = useState<Donateur | null>(null);
+  const [ecran, setEcran] = useState<Ecran>("selecteur");
+
+  if (donateur === null) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.shell}>
+          <SelecteurDonateur
+            onSelection={(d) => {
+              setDonateur(d);
+              setEcran("passeport");
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.page}>
       <div className={styles.shell}>
-        {donateur === null ? (
-          <SelecteurDonateur onSelection={setDonateur} />
+        {ecran === "passeport" ? (
+          <PasseportJ0
+            donateur={donateur}
+            onDecouvrir={() => setEcran("repartition")}
+          />
         ) : (
-          <PasseportJ0 donateur={donateur} />
+          <Repartition onRetour={() => setEcran("passeport")} />
         )}
       </div>
     </div>
@@ -49,7 +71,13 @@ function SelecteurDonateur({
   );
 }
 
-function PasseportJ0({ donateur }: { donateur: Donateur }) {
+function PasseportJ0({
+  donateur,
+  onDecouvrir,
+}: {
+  donateur: Donateur;
+  onDecouvrir: () => void;
+}) {
   return (
     <section>
       <div className={styles.heroBanner}>
@@ -79,8 +107,43 @@ function PasseportJ0({ donateur }: { donateur: Donateur }) {
         </div>
       </div>
 
-      <button type="button" className={styles.boutonPrimaire}>
+      <button
+        type="button"
+        className={styles.boutonPrimaire}
+        onClick={onDecouvrir}
+      >
         Découvrir l&apos;impact de mon don →
+      </button>
+    </section>
+  );
+}
+
+function Repartition({ onRetour }: { onRetour: () => void }) {
+  return (
+    <section>
+      <div className={styles.heroBanner}>
+        <div className={styles.passportTitre}>Où va mon argent ?</div>
+      </div>
+
+      <ul className={styles.listeRepartition}>
+        {REPARTITION.map((poste) => (
+          <li key={poste.id} className={styles.posteRepartition}>
+            <div className={styles.posteEnTete}>
+              <span>{poste.libelle}</span>
+              <span>{poste.pourcentage} %</span>
+            </div>
+            <div className={styles.barreFond}>
+              <div
+                className={styles.barreRemplissage}
+                style={{ width: `${poste.pourcentage}%` }}
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <button type="button" className={styles.boutonPrimaire} onClick={onRetour}>
+        ← Retour à mon Passeport
       </button>
     </section>
   );

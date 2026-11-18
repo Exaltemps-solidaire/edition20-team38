@@ -93,10 +93,58 @@ si le temps restant est revu à la hausse en cours de route.
 
 ---
 
-## À venir (hors budget des 23 minutes actuelles, à retailler si le temps change)
+---
 
-1. La répartition des fonds (J+7) : écran « Où va mon argent ? », accessible
-   depuis le bouton du Passeport J0, graphique SVG/CSS (78/12/7/3 %).
+## Itération 2 : Où va mon argent ? (répartition des fonds, J+7)
+
+- **Temps restant annoncé** : 10 à 20 minutes, demandé à 17:10. ✂️ Budget trop
+  serré pour un graphique SVG : je réduis à une liste de barres CSS simples
+  (une par poste), sans animation ni bibliothèque de graphique.
+- **Dans le périmètre** :
+  - Le bouton « Découvrir l'impact de mon don » du Passeport J0 devient actif
+    et affiche l'écran « Où va mon argent ? ».
+  - Cet écran liste les 4 postes de répartition (recherche, soutien aux
+    familles, sensibilisation, fonctionnement) avec leur pourcentage, en
+    barres CSS, données en dur.
+  - Un bouton retour vers le Passeport J0.
+- **Hors périmètre** : J+30, J+60, J+90 ; tout graphique SVG animé ; tout
+  pourcentage dynamique/issu d'une API.
+- **Critères d'acceptation** :
+  - Étant donné le Passeport J0 affiché, quand on clique sur « Découvrir
+    l'impact de mon don », alors l'écran de répartition s'affiche avec les
+    4 postes et leurs pourcentages.
+  - Étant donné l'écran de répartition affiché, quand on revient en arrière,
+    alors le Passeport J0 réapparaît.
+  - Les 4 pourcentages affichés totalisent 100 %.
+- **Hypothèse de l'équipe couverte** : étape 2 du plan de livraison
+  (« où va mon argent »).
+- **Codage estimé** : 8 minutes.
+- **Fichiers prévus** : `frontend/src/data/repartition.ts` (+ test de somme à
+  100 %), `frontend/src/app/page.tsx`, `frontend/src/app/page.module.css`.
+- **Plan validé** à 17:10.
+- **Bilan** :
+  - Durée de codage réelle : moins d'1 minute (chrono 17:11:5x → 17:12:0x),
+    pas de dépassement.
+  - Critères d'acceptation : les 3 sont satisfaits (bouton actif vers l'écran
+    de répartition, retour vers le Passeport J0, 4 postes totalisant 100 %,
+    vérifié par test unitaire).
+  - Reporté : rien à cette itération.
+  - Ce que le harnais a bloqué/refusé : rien (contrat et tests verts avant le
+    rebuild/déploiement).
+  - **Modifications** :
+    - `frontend/src/data/repartition.ts` (+ `repartition.test.ts`) — 4 postes
+      de répartition, testés pour sommer à 100 % (critère 3).
+    - `frontend/src/app/page.tsx` — écran « Où va mon argent ? », bouton
+      « Découvrir l'impact » rendu actif, navigation retour (critères 1, 2).
+    - `frontend/src/app/page.module.css` — barres CSS de répartition.
+    - Rebuild/redéploiement du seul service `frontend` (image `api`
+      inchangée).
+
+---
+
+## À venir (hors budget actuel, à retailler si le temps change)
+
+1. ~~La répartition des fonds (J+7)~~ → traitée en itération 2 ci-dessus.
 2. Les projets de recherche financés (J+30) : cartes de projets (Cancer du
    cerveau, Leucémie pédiatrique, Immunothérapie pédiatrique).
 3. Les avancées scientifiques (J+60) : vidéo placeholder d'une chercheuse,
